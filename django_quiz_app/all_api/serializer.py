@@ -33,3 +33,7 @@ class ResultSerializer(serializers.ModelSerializer):
         result = Results.objects.create(**validated_data)
         result.results.set(results_data)
         return result
+
+class SettingsSerializer(serializers.Serializer):
+    user_id = serializers.IntegerField()
+    theme = serializers.BooleanField()

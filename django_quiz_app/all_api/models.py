@@ -22,3 +22,7 @@ class Results(models.Model):
     name = models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
     success = models.FloatField()
     results = models.ManyToManyField(Quiz,blank=True,null=True)
+    
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    theme = models.BooleanField(default=False)

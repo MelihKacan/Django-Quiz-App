@@ -9,14 +9,15 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script>
+        var csrfToken = "{{ csrf_token }}";
         var user_theme = "{{user_theme}}";
+        var user_id = "{{user_id}}"
     </script>
-    <script src="{% static 'js/theme.js' %}"></script>
+    <script src="{% static 'js/settings.js' %}"></script>
 </head>
 <body>
-    {% for i in all_quizzes%}
-    <a class="text_quiz" href="{% url 'quiz_page' i.id %}"><h1>{{i.name}}</h1></a>
-    {%endfor%}
-    <a class="text_quiz" href="{% url 'settings' %}"><h1>Settings</h1></a>
+    <input type="checkbox" name="Dark Theme" value="True" id="theme_checkbox">
+    <label for="Dark Theme">Dark Theme</label>
+    <a href="/"><button style="bottom:10px" id="back">BACK</button></a>
 </body>
 </html>
