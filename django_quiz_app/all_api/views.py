@@ -1,9 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Quiz, Results, UserProfile
 from .serializer import QuizSerializer, ResultSerializer, SettingsSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout, authenticate
+from .forms import LoginForm, RegisterForm
+from django.contrib import messages
+from django.contrib.auth.models import User
 
+@login_required
 def quiz_page(request,quiz_id):
     
     all_questions = Quiz.objects.all().filter(id = quiz_id)
@@ -48,7 +54,8 @@ def post_result(request):
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
-        
+
+@login_required        
 def index(request):
     all_quizzes = Quiz.objects.all()
     request_user_profile = UserProfile.objects.get(user = request.user.id)
@@ -61,6 +68,7 @@ def index(request):
     
     return render(request,"index.html",context)
 
+@login_required
 def settings(request):
     request_user_profile = UserProfile.objects.get(user = request.user.id)
     user_theme = request_user_profile.theme
@@ -86,4 +94,47 @@ def post_settings(request):
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(request, username = username, password = password)
+            
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('index')
+                
+                else:
+                    messages.info(request, 'Disabled Account')   
+            else:
+                messages.info(request,'Check Your Username and Password')
         
+    else:
+        form = LoginForm()
+    
+    return render(request, 'login.html', {'form': form})
+
+def user_logout(request):
+    logout(request)
+    return redirect("index")
+
+def user_register(request):
+    form = RegisterForm()
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data["username"]
+            created_user = User.objects.get(username = username)
+            UserProfile.objects.create(user = created_user)
+            messages.success(request, 'Account has been created, You can LOGIN')
+            return redirect('login')
+    
+    else:
+        form = RegisterForm()
+    
+    return render(request, 'register.html', {'form': form})

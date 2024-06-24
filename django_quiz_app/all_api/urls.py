@@ -9,4 +9,7 @@ urlpatterns = [
     path("get_results/<int:quiz_id>",views.get_results,name="get_results"),
     path("settings",views.settings,name="settings"),
     path("post_settings",views.post_settings,name="post_settings"),
+    path("accounts/login/",views.user_login,name="login"),
+    path("accounts/logout/",views.user_logout,name="logout"),
+    path("accounts/register/",views.user_register,name="register")
 ]
