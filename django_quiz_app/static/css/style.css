@@ -66,6 +66,67 @@ h2.dark-theme{
     color:white;
 }
 
+.form-control::placeholder{
+    color:rgb(0,0,0);
+}
+
+.form-control:-webkit-autofill,
+.form-control{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    margin-right: 500px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid rgb(205, 205, 205);
+    background-color: grey!important;
+    -webkit-box-shadow: 0 0 0 30px grey inset !important;
+    color:rgb(255, 174, 35);
+    font-size: 14px;
+}
+
+.login-panel-texts{
+    color:rgb(205, 205, 205);
+}
+
+.login-panel{
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding:20%;
+    padding-bottom: 7%!important;
+    padding-top: 7%!important;
+    background-color: grey;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    box-shadow: 5px 5px rgb(205, 205, 205);
+}
+
+.register-panel{
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding:20%;
+    padding-bottom: 4%!important;
+    padding-top: 4%!important;
+    background-color: grey;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    box-shadow: 5px 5px rgb(205, 205, 205);
+}
+
+.register-panel-texts{
+    color:rgb(205, 205, 205);
+}
+
 @media only screen and (min-width:500px){
     #submit{
         margin-top: 7px;
@@ -129,4 +190,39 @@ button{
 .question_user_answer{
     font-size: 15px;
 }
+
+.login-panel{
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding:40%;
+    padding-bottom: 60%!important;
+    padding-top: 60%!important;
+    background-color: grey;
+    margin: 0;
+    position: absolute;
+    top: 130%!important;
+    left: 155%!important;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    box-shadow: 5px 5px rgb(205, 205, 205);
+}
+
+.register-panel{
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding:30%;
+    padding-bottom: 30%!important;
+    padding-top: 30%!important;
+    background-color: grey;
+    margin: 0;
+    position: absolute;
+    top: 130%;
+    left: 150%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+    box-shadow: 5px 5px rgb(205, 205, 205);
+}
+
 }

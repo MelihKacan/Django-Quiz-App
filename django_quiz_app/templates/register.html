@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="tab-pane active" id="Registration">
+    <div class="register-panel" id="Registration">
         <form method="POST" role="form" class="form-horizontal">
+            <h1 class="register-panel-texts">REGISTER FORM</h1>
           {% csrf_token %}
             <div class="form-group">
                     {{form.first_name}}
@@ -43,7 +44,7 @@
             <div class="row">							
                 <div class="col-sm-10">
                     <button type="submit" value="Register" id="submit">Register</button>
-                    <h3>You have a account ?</h3>
+                    <h3 class="register-panel-texts">You have a account ?</h3>
                     <a href="{% url 'login' %}"><button type="button" id="submit">Login</button></a>
                 </div>
             </div>

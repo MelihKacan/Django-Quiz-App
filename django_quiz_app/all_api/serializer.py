@@ -12,7 +12,7 @@ class QuizSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quiz
-        fields = ['id', 'name', 'questions']
+        fields = ['id', 'name', 'questions','publish_date_time','finish_date_time']
 
 class ResultSerializer(serializers.ModelSerializer):
     name = serializers.PrimaryKeyRelatedField(

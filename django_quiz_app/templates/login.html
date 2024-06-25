@@ -11,7 +11,7 @@
 <body>
     <div class="login-panel" id="Login">
         <form method="POST" role="form" class="form-horizontal">
-            <h1 class="form-name">LOGIN FORM</h1>
+            <h1 class="login-panel-texts">LOGIN FORM</h1>
             {% csrf_token %}
 
             {% if messages %}
@@ -30,7 +30,7 @@
             </div>
             <div class="row">
                 <button id="submit" type="submit" value="Submit">Login</button>
-                <h3>You haven't an account ?</h3>
+                <h3 class="login-panel-texts">You haven't an account ?</h3>
                 <a href="{% url 'register' %}"><button type="button" id="submit">Register</button></a>
             </div>
         </form>

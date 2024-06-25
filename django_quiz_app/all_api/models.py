@@ -17,6 +17,8 @@ class Questions(models.Model):
 class Quiz(models.Model):
     name = models.CharField(max_length=250)
     questions = models.ManyToManyField(Questions,blank=True,null=True)
+    publish_date_time = models.DateTimeField(auto_now=True)
+    finish_date_time = models.DateTimeField(null=True,blank=True)
     
 class Results(models.Model):
     name = models.ForeignKey(User,null=True,blank=True,on_delete=models.CASCADE)
