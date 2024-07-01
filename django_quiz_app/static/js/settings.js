@@ -1,6 +1,8 @@
 $(function(){
-    var theme = user_theme
-    if(user_theme == "True"){
+    $.get("/theme_api",function(data,status){
+
+    var theme = data.user_theme
+    if(theme == true){
         $("input").prop('checked',true)
         $("*").toggleClass("dark-theme");
     }
@@ -33,4 +35,5 @@ $(function(){
             }
         });
     })
+})
 })

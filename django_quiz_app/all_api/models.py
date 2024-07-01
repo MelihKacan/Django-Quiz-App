@@ -28,3 +28,4 @@ class Results(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     theme = models.BooleanField(default=False)
+    profile_photo = models.ImageField(upload_to="profile_photos/%Y/%m/%d/",default="profile_photo_default.png")

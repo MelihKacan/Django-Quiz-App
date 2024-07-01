@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+    <script src="{% static 'js/user_dashboard.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <div class="user_container">
+        <img class="user_dashboard_user_photo" src="" alt="">
+        <h1 class="user_dashboard_username" id="username"></h1>
+    </div>
+    <div class="quizzes_container">
+        <h1 style="display: inline;" class="user_dashboard_quiz_name">Quizzes</h1>
+        <h1 style="display: inline;" id="quiz_name"></h1>
+        <h1 style="display: inline; margin:0px;" class="user_dashboard_quiz_result">Results</h1>
+        <h1 style="display: inline;" id="quiz_success"></h1>
+        <a class="back_button" href="/"><button id="back">BACK</button></a>
+    </div>
+</body>
+</html>

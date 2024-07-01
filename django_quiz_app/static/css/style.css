@@ -135,6 +135,40 @@ h2.dark-theme{
     #back{
         margin-top: 7px;
     }
+
+    .user_dashboard_user_photo{
+        display: inline;
+        margin-left: 5%;
+        margin-top: 5%;
+        width: 230px;
+        height: 230px;
+        border-radius: 115px;
+    }
+
+    .user_dashboard_quiz_result{
+        display:inline; 
+        right:10%; 
+        position: absolute
+    }
+    
+    .user_dashboard_quiz_name{
+        display: inline-flex
+    }
+
+    .user_dashboard_username{
+        display: block;
+        text-align: center;
+    }
+
+    .quizzes_container{
+        display: inline-block; 
+        width: 180px; 
+        margin-left:70px;
+    }
+
+    .user_container{
+        display: inline-block;
+    }
 }
 
 
@@ -223,6 +257,29 @@ button{
     transform: translate(-50%, -50%);
     border-radius: 30px;
     box-shadow: 5px 5px rgb(205, 205, 205);
+}
+
+.user_dashboard_quiz_result{
+    display:inline; 
+    right:10%; 
+    position: absolute
+}
+
+.user_dashboard_quiz_name{
+    display: inline-flex
+}
+
+.user_dashboard_username{
+    text-align: center;
+}
+
+.user_dashboard_user_photo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 230px;
+    height: 230px;
+    border-radius: 115px;
 }
 
 }

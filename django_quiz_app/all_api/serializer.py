@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Quiz, Questions, Results
+from .models import Quiz, Questions, Results, UserProfile
 from django.contrib.auth.models import User
 
 class QuestionsSerializer(serializers.ModelSerializer):
@@ -37,3 +37,8 @@ class ResultSerializer(serializers.ModelSerializer):
 class SettingsSerializer(serializers.Serializer):
     user_id = serializers.IntegerField()
     theme = serializers.BooleanField()
+    
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ['profile_photo']

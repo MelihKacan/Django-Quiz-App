@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Quiz, Results, UserProfile
-from .serializer import QuizSerializer, ResultSerializer, SettingsSerializer
+from .serializer import QuizSerializer, ResultSerializer, SettingsSerializer, UserProfileSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
@@ -16,13 +16,11 @@ def quiz_page(request,quiz_id):
     currently_user = request.user.id
     quiz = quiz_id
     request_user_profile = UserProfile.objects.get(user = request.user.id)
-    user_theme = request_user_profile.theme
     
     context = {
         "all_questions": all_questions,
         "currently_user": currently_user,
         "quiz_id": quiz,
-        "user_theme": user_theme
     }
     
     return render(request,"quiz_page.html",context)
@@ -59,23 +57,18 @@ def post_result(request):
 def index(request):
     all_quizzes = Quiz.objects.all()
     request_user_profile = UserProfile.objects.get(user = request.user.id)
-    user_theme = request_user_profile.theme
     
     context = {
         "all_quizzes": all_quizzes,
-        "user_theme": user_theme
     }
     
     return render(request,"index.html",context)
 
 @login_required
 def settings(request):
-    request_user_profile = UserProfile.objects.get(user = request.user.id)
-    user_theme = request_user_profile.theme
     user_id = request.user.id
     
     context = {
-        "user_theme": user_theme,
         "user_id": user_id,
     }
     
@@ -118,6 +111,7 @@ def user_login(request):
     
     return render(request, 'login.html', {'form': form})
 
+@login_required
 def user_logout(request):
     logout(request)
     return redirect("index")
@@ -138,3 +132,43 @@ def user_register(request):
         form = RegisterForm()
     
     return render(request, 'register.html', {'form': form})
+
+@api_view(['GET'])
+def user_dashboard_api(request):
+    solved_quiz_results = Results.objects.filter(name = request.user)
+    
+    solved_quiz = Quiz.objects.filter(id__in=solved_quiz_results.values_list('results', flat=True))
+    
+    serialized_solved_quiz_results = ResultSerializer(solved_quiz_results, many=True).data
+    
+    serialized_solved_quiz = QuizSerializer(solved_quiz,many=True).data
+    
+    user_name = request.user.username
+    
+    user_profile = UserProfile.objects.get(user = request.user)
+    
+    user_profile_photo = UserProfileSerializer(user_profile).data['profile_photo']
+    
+    context = {
+        "solved_quiz_results": serialized_solved_quiz_results,
+        "solved_quiz": serialized_solved_quiz,
+        "user_name": user_name,
+        "user_profile_photo": user_profile_photo,
+    }
+    
+    return Response(context)
+
+@login_required
+def user_dashboard_web_page(request):
+    return render(request,"user_dashboard.html")
+
+@api_view(['GET'])
+def theme_api(request):
+    request_user_profile = UserProfile.objects.get(user = request.user.id)
+    user_theme = request_user_profile.theme
+    
+    context = {
+        "user_theme": user_theme,
+    }
+    
+    return Response(context)

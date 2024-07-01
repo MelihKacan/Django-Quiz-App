@@ -11,5 +11,8 @@ urlpatterns = [
     path("post_settings",views.post_settings,name="post_settings"),
     path("accounts/login/",views.user_login,name="login"),
     path("accounts/logout/",views.user_logout,name="logout"),
-    path("accounts/register/",views.user_register,name="register")
+    path("accounts/register/",views.user_register,name="register"),
+    path("user_dashboard_api",views.user_dashboard_api,name="user_dashboard_api"),
+    path("user_dashboard_web_page",views.user_dashboard_web_page,name="user_dashboard_web_page"),
+    path("theme_api",views.theme_api,name="theme_api"),
 ]
