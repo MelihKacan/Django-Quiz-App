@@ -41,4 +41,13 @@ class SettingsSerializer(serializers.Serializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = ['profile_photo']
+        fields = ['profile_photo',"user_level","user_exp"]
+        
+class UserLevelSeralizer(serializers.Serializer):        
+    user = serializers.IntegerField()
+    user_level = serializers.IntegerField()
+    user_exp = serializers.FloatField()
+    
+class UserExpSerializer(serializers.Serializer):
+    currently_user = serializers.IntegerField()
+    exp = serializers.FloatField()

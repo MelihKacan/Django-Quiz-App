@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Quiz, Results, UserProfile
-from .serializer import QuizSerializer, ResultSerializer, SettingsSerializer, UserProfileSerializer
+from .serializer import QuizSerializer, ResultSerializer, SettingsSerializer, UserProfileSerializer, UserLevelSeralizer, UserExpSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
@@ -145,15 +145,18 @@ def user_dashboard_api(request):
     
     user_name = request.user.username
     
+    user_id = request.user.id
+    
     user_profile = UserProfile.objects.get(user = request.user)
     
-    user_profile_photo = UserProfileSerializer(user_profile).data['profile_photo']
+    user_profile_photo = UserProfileSerializer(user_profile).data
     
     context = {
         "solved_quiz_results": serialized_solved_quiz_results,
         "solved_quiz": serialized_solved_quiz,
         "user_name": user_name,
-        "user_profile_photo": user_profile_photo,
+        "user_id": user_id,
+        "user_profile": user_profile_photo,
     }
     
     return Response(context)
@@ -172,3 +175,28 @@ def theme_api(request):
     }
     
     return Response(context)
+
+@api_view(['POST'])
+def user_level_api_post(request):
+    if request.method == 'POST':
+        serializer = UserLevelSeralizer(data = request.data)
+        if serializer.is_valid():
+            currently_user = UserProfile.objects.get(user = serializer.validated_data["user"])
+            currently_user.user_exp = serializer.validated_data["user_exp"]
+            currently_user.user_level = serializer.validated_data["user_level"]
+            currently_user.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
+        
+@api_view(['POST'])
+def user_exp_api_post(request):
+    if request.method == 'POST':
+        serializer = UserExpSerializer(data = request.data)
+        if serializer.is_valid():
+            currently_user = UserProfile.objects.get(user = serializer.validated_data["currently_user"])
+            currently_user.user_exp += serializer.validated_data["exp"]
+            currently_user.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)

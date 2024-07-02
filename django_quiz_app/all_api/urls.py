@@ -15,4 +15,6 @@ urlpatterns = [
     path("user_dashboard_api",views.user_dashboard_api,name="user_dashboard_api"),
     path("user_dashboard_web_page",views.user_dashboard_web_page,name="user_dashboard_web_page"),
     path("theme_api",views.theme_api,name="theme_api"),
+    path("user_level_api_post",views.user_level_api_post,name="user_level_api_post"),
+    path("user_exp_api_post",views.user_exp_api_post,name="user_exp_api_post"),
 ]

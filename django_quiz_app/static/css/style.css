@@ -127,7 +127,7 @@ h2.dark-theme{
     color:rgb(205, 205, 205);
 }
 
-@media only screen and (min-width:500px){
+@media only screen and (min-width:601px){
     #submit{
         margin-top: 7px;
         margin-left:7px;
@@ -148,13 +148,21 @@ h2.dark-theme{
     .user_dashboard_quiz_result{
         display:inline; 
         right:10%; 
-        position: absolute
+        position: absolute;
     }
     
     .user_dashboard_quiz_name{
         display: inline-flex
     }
 
+    #user_level_button{
+        display: block!important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #user_level,
+    #user_exp,
     .user_dashboard_username{
         display: block;
         text-align: center;
@@ -162,8 +170,10 @@ h2.dark-theme{
 
     .quizzes_container{
         display: inline-block; 
-        width: 180px; 
+        width: 30%; 
         margin-left:70px;
+        margin-top:5%;
+        vertical-align: top;
     }
 
     .user_container{
@@ -172,7 +182,7 @@ h2.dark-theme{
 }
 
 
-@media only screen and (max-width:500px){
+@media only screen and (max-width:600px){
 .quiz_name{
     text-align: center;
 }
@@ -269,6 +279,14 @@ button{
     display: inline-flex
 }
 
+#user_level,
+#user_exp,
+#user_level_button{
+    text-align: center;
+    display: inline-block;
+    margin-left: 5%;
+    margin-bottom: 8%;
+}
 .user_dashboard_username{
     text-align: center;
 }
@@ -282,4 +300,20 @@ button{
     border-radius: 115px;
 }
 
+}
+
+@media only screen and (max-width:400px){    
+    #user_exp{
+        text-align: center;
+        display: block;
+        margin-bottom: 5%;
+    }
+
+    #user_level,
+    #user_level_button{
+        text-align: center!important;
+        display: inline-block!important;
+        margin-left: 12%;
+        margin-bottom: 8%;
+    }
 }

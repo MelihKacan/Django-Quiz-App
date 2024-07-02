@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+    <script>
+        var csrfToken = "{{ csrf_token }}";
+    </script>
     <script src="{% static 'js/user_dashboard.js' %}"></script>
     <script src="{% static 'js/theme.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -16,6 +19,9 @@
     <div class="user_container">
         <img class="user_dashboard_user_photo" src="" alt="">
         <h1 class="user_dashboard_username" id="username"></h1>
+        <h1 class="user_dashboard_username" id="user_exp">Exp:</h1>
+        <h1 class="user_dashboard_username" id="user_level">Level:</h1>
+        <button class="user_dashboard_username" id="user_level_button">Update Level</button>
     </div>
     <div class="quizzes_container">
         <h1 style="display: inline;" class="user_dashboard_quiz_name">Quizzes</h1>

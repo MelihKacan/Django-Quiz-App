@@ -72,6 +72,25 @@ $(function(){
                             console.log(xhr.responseText);
                         }
                     });
+
+                    $.ajax({
+                        url: "/user_exp_api_post",
+                        type: "POST",
+                        headers: {
+                            'X-CSRFToken': csrfToken
+                        },
+                        data: JSON.stringify({
+                            "currently_user": currentlyUser,
+                            "exp": (Math.floor(Math.random() * 25) + 1)
+                        }),
+                        contentType: "application/json",
+                        success: function(response){
+                            console.log(response);
+                        },
+                        error: function(xhr, status, error){
+                            console.log(xhr.responseText);
+                        }
+                    });
                     setTimeout(1000);
                     window.location.href = "/";
                 });

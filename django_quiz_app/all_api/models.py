@@ -29,3 +29,5 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     theme = models.BooleanField(default=False)
     profile_photo = models.ImageField(upload_to="profile_photos/%Y/%m/%d/",default="profile_photo_default.png")
+    user_level = models.IntegerField(default=1)
+    user_exp = models.FloatField(default=0)
