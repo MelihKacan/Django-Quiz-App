@@ -81,7 +81,7 @@ $(function(){
                         },
                         data: JSON.stringify({
                             "currently_user": currentlyUser,
-                            "exp": (Math.floor(Math.random() * 25) + 1)
+                            "exp": l * 5,
                         }),
                         contentType: "application/json",
                         success: function(response){
