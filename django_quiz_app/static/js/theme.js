@@ -3,7 +3,7 @@ $(function(){
         if(data.user_theme == false){}
         else{
             $(function(){
-                $( "h1, h2, body" ).addClass( "dark-theme" );
+                $( "h1, h2, h3, body" ).addClass( "dark-theme" );
             })
         }
     })

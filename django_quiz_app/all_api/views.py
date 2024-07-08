@@ -15,7 +15,6 @@ def quiz_page(request,quiz_id):
     all_questions = Quiz.objects.all().filter(id = quiz_id)
     currently_user = request.user.id
     quiz = quiz_id
-    request_user_profile = UserProfile.objects.get(user = request.user.id)
     
     context = {
         "all_questions": all_questions,

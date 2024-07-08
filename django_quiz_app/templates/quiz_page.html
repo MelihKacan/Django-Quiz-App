@@ -20,21 +20,7 @@
 <body>
     
     <!--<h2>Currently User: {{currently_user}}</h2>-->
-    {% for i in all_questions %}
-        <h2 class="quiz_name">{{ i.name }}</h2>
-
-        {% for j in i.questions.all %}
-            <h2 class="question_number">{{ j.name }}</h2>
-            <h2 class="question">{{ j.header }}</h2>
-            <h2 class="a">A-) {{ j.a }}</h2>
-            <h2 class="b">B-) {{ j.b }}</h2>
-            <h2 class="c">C-) {{ j.c }}</h2>
-            <h2 class="d">D-) {{ j.d }}</h2>
-            {% comment %} <h2>{{j.id}}</h2> {% endcomment %}
-            <input class="question_user_answer" id="{{j.id}}" type="text">
-            
-        {% endfor %}
-    {% endfor %}
+    <div class="question_all"></div>
     <a class="back_button" href="/"><button id="back">BACK</button></a>
     <button id="submit">FINISH</button>
     <h1 id="abc"></h1>

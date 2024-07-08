@@ -10,6 +10,7 @@ class Questions(models.Model):
     d = models.CharField(max_length=9999)
     correct_answer = models.CharField(max_length=1)
     answer = models.CharField(max_length=1,null=True,blank=True)
+    question_photo = models.ImageField(upload_to="question_photos/%Y/%m/%d/",null=True,blank=True)
     
     def __str__(self):
         return str(self.id)

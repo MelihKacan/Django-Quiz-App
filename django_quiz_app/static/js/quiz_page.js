@@ -8,12 +8,31 @@ $(function(){
             }
         });
         if(result_var == 1){
-            $("h2").hide();
-            $("#submit").hide();
-            $("input").hide();
             abcna = "<h1>" + "Bu Teste Zaten Girildi" + "</h1>";
-            $("#abc").html(abcna);
+            $(".question_all").html(abcna);
         } else {
+            $.get("/get_all/" + quizId, function(data, status){
+                var k = 0;
+                var question_all = "";
+                data.forEach(function(quiz) {
+                    question_all += '<h2 class="quiz_name">' + quiz.name + '</h2>'
+                    quiz.questions.forEach(function(questin){
+                        
+                        question_all += '<h2 class="question_number">' + quiz.questions[k].name + '</h2>'
+                        question_all += '<img id="question_photo" src=' + quiz.questions[k].question_photo + ' alt="">'
+                        question_all += '<h2 class="question">' + quiz.questions[k].header + '</h2>'
+                        question_all += '<h2 class="a">' + 'A-)' + quiz.questions[k].a + '</h2>'
+                        question_all += '<h2 class="b">' + 'B-)' + quiz.questions[k].b + '</h2>'
+                        question_all += '<h2 class="c">' + 'C-)' + quiz.questions[k].c + '</h2>'
+                        question_all += '<h2 class="d">' + 'D-)'+ quiz.questions[k].d + '</h2>'
+                        question_all += '<input class="question_user_answer" id=' + quiz.questions[k].id + ' type="text">'
+                        
+                        k++;
+                        console.log(k)
+                    })
+                    });
+                    $(".question_all").html(question_all)
+            });
             $("#submit").one("click",function(){
                 $.get("/get_all/" + quizId, function(data, status){
                     var _text = '';
