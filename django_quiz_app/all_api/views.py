@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Quiz, Results, UserProfile
-from .serializer import QuizSerializer, ResultSerializer, SettingsSerializer, UserProfileSerializer, UserLevelSeralizer, UserExpSerializer
+from .serializer import QuizSerializer, ResultSerializer, SettingsSerializer, UserProfileSerializer, UserLevelSeralizer, UserExpSerializer, UserProfilePhotoSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.contrib.auth.decorators import login_required
@@ -195,6 +195,18 @@ def user_exp_api_post(request):
         if serializer.is_valid():
             currently_user = UserProfile.objects.get(user = serializer.validated_data["currently_user"])
             currently_user.user_exp += serializer.validated_data["exp"]
+            currently_user.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
+        
+@api_view(['POST'])
+def user_photo_api_post(request):
+    if request.method == "POST":
+        serializer = UserProfilePhotoSerializer(data = request.data)
+        if serializer.is_valid():
+            currently_user = UserProfile.objects.get(user = request.user)
+            currently_user.profile_photo = serializer.validated_data["profile_photo"]
             currently_user.save()
             return Response(serializer.data)
         else:

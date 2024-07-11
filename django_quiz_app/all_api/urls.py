@@ -17,4 +17,5 @@ urlpatterns = [
     path("theme_api",views.theme_api,name="theme_api"),
     path("user_level_api_post",views.user_level_api_post,name="user_level_api_post"),
     path("user_exp_api_post",views.user_exp_api_post,name="user_exp_api_post"),
+    path("user_photo_api_post",views.user_photo_api_post,name="user_photo_api_post"),
 ]

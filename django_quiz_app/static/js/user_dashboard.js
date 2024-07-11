@@ -3,6 +3,7 @@ $(function(){
         _success = ""
         _quiz_name = ""
         $("#username").text(data.user_name)
+        $("#user_photo_file_input").hide()
         
         data.solved_quiz_results.forEach(function(result){
             data.solved_quiz.forEach(function(quiz){
@@ -135,5 +136,30 @@ $(function(){
                     alert("Yeterli Exp Puanın Yok")
               }
         })
+    $(".user_dashboard_user_photo_click").click(function(){
+        $("#user_photo_file_input").show()
+        $("#user_photo_file_input").on("change",function(){
+            var image = document.getElementById("user_photo_file_input").files[0]
+            var form_data = new FormData()
+            form_data.append("profile_photo", image)
+            $.ajax({
+                url: "/user_photo_api_post",
+                type: "POST",
+                headers: {
+                    'X-CSRFToken': csrfToken
+                },
+                data: form_data,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    console.log(response);
+                    location.reload();
+                },
+                error: function(xhr, status, error){
+                    console.log(xhr.responseText);
+                }
+            });
+        })
+    })
 })
 })

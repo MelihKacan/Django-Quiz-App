@@ -51,3 +51,6 @@ class UserLevelSeralizer(serializers.Serializer):
 class UserExpSerializer(serializers.Serializer):
     currently_user = serializers.IntegerField()
     exp = serializers.FloatField()
+    
+class UserProfilePhotoSerializer(serializers.Serializer):
+    profile_photo = serializers.FileField(use_url=False)
