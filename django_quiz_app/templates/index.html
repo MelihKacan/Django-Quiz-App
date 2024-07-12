@@ -8,12 +8,10 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="{% static 'js/theme.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
-    {% for i in all_quizzes%}
-    <a class="text_quiz" href="{% url 'quiz_page' i.id %}"><h1>{{i.name}}</h1></a>
-    {%endfor%}
+    <div id="all_quizzes"></div>
     <a class="text_quiz" href="{% url 'settings' %}"><h1>Settings</h1></a>
     <a class="text_quiz" href="{% url 'user_dashboard_web_page' %}"><h1>User Dashboard</h1></a>
     <a class="text_quiz" href="{% url 'logout' %}"><h1>LOGOUT</h1></a>

@@ -1,4 +1,5 @@
 $(function(){
+    var quiz_id = $(location).attr('href').replace("http://127.0.0.1:8000/quiz_page/","")
     function getCurrentISODateTime() {
         const now = new Date();
         const year = now.getUTCFullYear();
@@ -14,7 +15,7 @@ $(function(){
 
     dateTime1 = getCurrentISODateTime()
 
-    $.get("/get_all/" + quizId, function(data, status){
+    $.get("/get_all/" + quiz_id, function(data, status){
         data.forEach(function(quiz) {
         if(quiz.finish_date_time == null){}
         else{

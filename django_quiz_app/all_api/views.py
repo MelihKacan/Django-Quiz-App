@@ -11,18 +11,7 @@ from django.contrib.auth.models import User
 
 @login_required
 def quiz_page(request,quiz_id):
-    
-    all_questions = Quiz.objects.all().filter(id = quiz_id)
-    currently_user = request.user.id
-    quiz = quiz_id
-    
-    context = {
-        "all_questions": all_questions,
-        "currently_user": currently_user,
-        "quiz_id": quiz,
-    }
-    
-    return render(request,"quiz_page.html",context)
+    return render(request,"quiz_page.html")
 
 
 @api_view(['GET'])
@@ -52,26 +41,20 @@ def post_result(request):
         else:
             return Response(serializer.errors)
 
-@login_required        
-def index(request):
+
+@api_view(['GET'])
+def index_api(request):
     all_quizzes = Quiz.objects.all()
-    request_user_profile = UserProfile.objects.get(user = request.user.id)
-    
-    context = {
-        "all_quizzes": all_quizzes,
-    }
-    
-    return render(request,"index.html",context)
+    serializer = QuizSerializer(all_quizzes, many=True)
+    return Response(serializer.data)
+
+@login_required        
+def index(request):    
+    return render(request,"index.html")
 
 @login_required
-def settings(request):
-    user_id = request.user.id
-    
-    context = {
-        "user_id": user_id,
-    }
-    
-    return render(request,"settings.html",context)
+def settings(request): 
+    return render(request,"settings.html")
 
 @api_view(['POST'])
 def post_settings(request):
@@ -211,3 +194,13 @@ def user_photo_api_post(request):
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
+        
+@api_view(['GET'])
+def get_user_id(request):
+    currently_user = request.user.id
+    
+    context = {
+        "user_id": currently_user,
+    }
+    
+    return Response(context)

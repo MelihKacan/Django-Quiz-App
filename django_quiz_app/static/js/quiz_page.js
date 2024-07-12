@@ -1,6 +1,27 @@
 $(function(){
+    $.get("/get_user_id",function(data,status){
+        var currentlyUser = data.user_id
+    
+    function getCSRFToken() {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                if (cookie.substring(0, 10) == ('csrftoken' + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(10));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    var csrfToken = getCSRFToken()
+
     var k = 0;
-    $.get("/get_results/" + quizId, function(result_data, result_status){
+    var quiz_id = $(location).attr('href').replace("http://127.0.0.1:8000/quiz_page/","")
+    $.get("/get_results/" + quiz_id, function(result_data, result_status){
         var result_var = 0;
         var abcna = "";
         result_data.forEach(function(result_data_data){
@@ -12,7 +33,7 @@ $(function(){
             abcna = "<h1>" + "Bu Teste Zaten Girildi" + "</h1>";
             $(".question_all").html(abcna);
         } else {
-            $.get("/get_all/" + quizId, function(data, status){
+            $.get("/get_all/" + quiz_id, function(data, status){
                 var question_all = "";
                 data.forEach(function(quiz) {
                     question_all += '<h2 class="quiz_name">' + quiz.name + '</h2>'
@@ -32,7 +53,7 @@ $(function(){
                         //question_all += '<input class="question_user_answer" id=' + quiz.questions[k].id + ' type="text">'
                         
                         k++;
-                        console.log(k)
+                        //console.log(k)
                     })
                     });
                     $(".question_all").html(question_all)
@@ -84,7 +105,7 @@ $(function(){
             });
 
             $("#submit").one("click",function(){
-                $.get("/get_all/" + quizId, function(data, status){
+                $.get("/get_all/" + quiz_id, function(data, status){
                     var _text = '';
                     var l = 0;
                     var array = [];
@@ -131,11 +152,11 @@ $(function(){
                                 array[l] = false;
                             }
                             l++;
-                            console.log(l);
+                            //console.log(l);
                         });
                     });
                     var co_ans_num = 0;
-                    alert(array);
+                    //alert(array);
                     for(var o = 0; o < l; o++){
                         if(array[o] == false){
                             all_answer_correct = false;
@@ -144,9 +165,9 @@ $(function(){
                         }
                     }
                     if(all_answer_correct == true){
-                        alert("Tebrikler" + (co_ans_num/l) * 100);
+                        alert("Tebrikler, Puanınız:  " + (co_ans_num/l) * 100);
                     } else {
-                        alert("Başarı Puanın: " + (co_ans_num/l) * 100);
+                        alert("Başarı Puanın:  " + (co_ans_num/l) * 100);
                     }
 
                     $.ajax({
@@ -158,14 +179,14 @@ $(function(){
                         data: JSON.stringify({
                             "name": currentlyUser,
                             "success": (co_ans_num/l) * 100,
-                            "results": [quizId]
+                            "results": [quiz_id]
                         }),
                         contentType: "application/json",
                         success: function(response){
-                            console.log(response);
+                            //console.log(response);
                         },
                         error: function(xhr, status, error){
-                            console.log(xhr.responseText);
+                            //console.log(xhr.responseText);
                         }
                     });
 
@@ -181,10 +202,10 @@ $(function(){
                         }),
                         contentType: "application/json",
                         success: function(response){
-                            console.log(response);
+                            //console.log(response);
                         },
                         error: function(xhr, status, error){
-                            console.log(xhr.responseText);
+                            //console.log(xhr.responseText);
                         }
                     });
                     setTimeout(1000);
@@ -193,4 +214,5 @@ $(function(){
             });
         }
     });
+});
 });

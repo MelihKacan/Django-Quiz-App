@@ -18,4 +18,6 @@ urlpatterns = [
     path("user_level_api_post",views.user_level_api_post,name="user_level_api_post"),
     path("user_exp_api_post",views.user_exp_api_post,name="user_exp_api_post"),
     path("user_photo_api_post",views.user_photo_api_post,name="user_photo_api_post"),
+    path("get_user_id",views.get_user_id,name="get_user_id"),
+    path("index_api",views.index_api,name="index_api"),
 ]
