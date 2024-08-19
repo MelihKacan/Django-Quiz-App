@@ -81,7 +81,7 @@ h2.dark-theme{
     border-bottom: 2px solid rgb(205, 205, 205);
     background-color: grey!important;
     -webkit-box-shadow: 0 0 0 30px grey inset !important;
-    color:rgb(255, 174, 35);
+    color:black;
     font-size: 14px;
 }
 
@@ -90,37 +90,33 @@ h2.dark-theme{
 }
 
 .login-panel{
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    padding:20%;
     padding-bottom: 7%!important;
     padding-top: 7%!important;
-    background-color: grey;
+    background-color: rgb(46, 46, 46);
     margin: 0;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 30px;
     box-shadow: 5px 5px rgb(205, 205, 205);
+    padding-left: 10%;
+    padding-right: 10%;
+    left: 50%;
+    top: 12%;
+    transform: translate(-50.5%, 0);
 }
 
 .register-panel{
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    padding:20%;
-    padding-bottom: 4%!important;
-    padding-top: 4%!important;
-    background-color: grey;
+    padding-bottom: 3%!important;
+    padding-top: 3%!important;
+    background-color: rgb(46, 46, 46);
     margin: 0;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 30px;
     box-shadow: 5px 5px rgb(205, 205, 205);
+    padding-left: 10%;
+    padding-right: 10%;
+    left: 50%;
+    top:5%;
+    transform: translate(-50.5%, 0);
 }
 
 .register-panel-texts{
@@ -189,9 +185,6 @@ h2.dark-theme{
 #submit{
     display: inline;
     margin-top: 7px;
-    position: absolute;
-    right:    10px;
-    /* bottom:   5px; */
 }
 
 #back{
@@ -205,6 +198,11 @@ button{
     padding: 7px;
     padding-left: 23px!important;
     padding-right: 23px!important;
+}
+
+a{
+    text-decoration: none;
+    margin-bottom: 40%;
 }
 
 .a{
@@ -236,37 +234,39 @@ button{
 }
 
 .login-panel{
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    padding:40%;
-    padding-bottom: 60%!important;
-    padding-top: 60%!important;
-    background-color: grey;
+    background-color: rgb(46, 46, 46);
     margin: 0;
-    position: absolute;
-    top: 130%!important;
-    left: 155%!important;
-    transform: translate(-50%, -50%);
     border-radius: 30px;
     box-shadow: 5px 5px rgb(205, 205, 205);
+    left: 30%;
+    top: 16%;
+    transform: translate(-25%, 0);
+}
+
+h1.login-panel-texts{
+    margin-top: 20%;
+}
+
+.form-control{
+    margin-top: 10%;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+form{
+    width: 220px;
 }
 
 .register-panel{
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    padding:30%;
-    padding-bottom: 30%!important;
-    padding-top: 30%!important;
-    background-color: grey;
+    background-color: rgb(46, 46, 46);
     margin: 0;
-    position: absolute;
-    top: 130%;
-    left: 150%;
-    transform: translate(-50%, -50%);
     border-radius: 30px;
     box-shadow: 5px 5px rgb(205, 205, 205);
+    left: 30%;
+    top: 1%;
+    transform: translate(-25%, 0);
 }
 
 .user_dashboard_quiz_result{
