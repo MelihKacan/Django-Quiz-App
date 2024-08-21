@@ -1,4 +1,6 @@
+{% extends "navbar.html" %}
 {% load static %}
+{% block content %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +12,7 @@
     <script src="{% static 'js/user_dashboard.js' %}"></script>
     <script src="{% static 'js/theme.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
 </head>
 <body>
@@ -27,7 +30,9 @@
         <h1 style="display: inline;" id="quiz_name"></h1>
         <h1 style="display: inline; margin:0px;" class="user_dashboard_quiz_result">Results</h1>
         <h1 style="display: inline;" id="quiz_success"></h1>
-        <a class="back_button" href="/"><button id="back">BACK</button></a>
+        <!--<a class="back_button" href="/"><button id="back">BACK</button></a>-->
     </div>
 </body>
 </html>
+
+{% endblock %}

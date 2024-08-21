@@ -1,4 +1,6 @@
+{% extends "navbar.html" %}
 {% load static %}
+{% block content %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,11 +10,15 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <script src="{% static 'js/settings.js' %}"></script>
 </head>
 <body>
     <input type="checkbox" name="Dark Theme" value="True" id="theme_checkbox">
     <label for="Dark Theme">Dark Theme</label>
-    <a href="/"><button style="bottom:10px" id="back">BACK</button></a>
+    <a class="text_quiz" href="{% url 'logout' %}"><h1>LOGOUT</h1></a>
+    <!--<a href="/"><button style="bottom:10px" id="back">BACK</button></a>-->
 </body>
 </html>
+
+{% endblock %}

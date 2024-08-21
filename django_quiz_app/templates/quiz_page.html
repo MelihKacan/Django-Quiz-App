@@ -1,4 +1,6 @@
+{% extends "navbar.html" %}
 {% load static %}
+{% block content %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +13,7 @@
     <script src="{% static 'js/theme.js' %}"></script>
     <script src="{% static 'js/quiz_page.js' %}"></script>
     <script src="{% static 'js/date.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 </head>
 <body>
     
@@ -21,3 +24,5 @@
     <h1 id="abc"></h1>
 </body>
 </html>
+
+{% endblock %}
