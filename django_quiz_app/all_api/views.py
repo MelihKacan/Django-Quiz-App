@@ -204,3 +204,6 @@ def get_user_id(request):
     }
     
     return Response(context)
+
+def all_quizzes_web_page(request):
+    return render(request,"all_quizzes.html")

@@ -24,7 +24,6 @@ $(function(){
     var theme = data.user_theme
     if(theme == true){
         $("input").prop('checked',true)
-        $("*").toggleClass("dark-theme");
     }
     $("input").click(function(){
         if($("input").prop('checked') == true){

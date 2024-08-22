@@ -1,19 +1,30 @@
 {% load static %}
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-<script src="{% static 'js/navbar.js' %}"></script>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <script src="{% static 'js/navbar.js' %}"></script>
+        <script src="{% static 'js/theme.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    </head>
 
-<ul>
-    <div>
-        <h1 id="logo_text">Quiz App</h1>
-        <i id="3_horizontal_line" class="fa fa-bars" aria-hidden="true"></i>
-    </div>
-    <li><a class="{% if '/' == request.path%} active {%endif%}" href="/">Home</a></li>
-    <li><a class="{% if 'dashboard' in request.path%} active {%endif%}" href="{% url 'user_dashboard_web_page' %}">Dashboard</a></li>
-    <li><a class="{% if '#' in request.path%} active {%endif%}" href="#All_Quizzes">All Quizzes</a></li>
-    <li style="float:right"><a class="{% if 'settings' in request.path%} active {%endif%}" href="{% url 'settings' %}">Settings</a></li>
-</ul>
+    <ul>
+        <div>
+            <h1 id="logo_text">Quiz App</h1>
+            <i id="3_horizontal_line" class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <li><a class="{% if '/' == request.path%} active {%endif%}" href="/">Home</a></li>
+        <li><a class="{% if 'dashboard' in request.path%} active {%endif%}" href="{% url 'user_dashboard_web_page' %}">Dashboard</a></li>
+        <li><a class="{% if 'all_quizzes' in request.path%} active {%endif%}" href="{% url 'all_quizzes' %}">All Quizzes</a></li>
+        <li style="float:right"><a class="{% if 'settings' in request.path%} active {%endif%}" href="{% url 'settings' %}">Settings</a></li>
+    </ul>
 
 
-{% block content%}
-{% endblock %}
+    {% block content%}
+    {% endblock %}
+
+</html>

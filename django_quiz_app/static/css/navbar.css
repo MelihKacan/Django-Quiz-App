@@ -1,9 +1,17 @@
-ul {
+ul.dark-theme {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #4c4c4c;
+  }
+
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #c0c0c0;
   }
   
   li {
@@ -20,18 +28,39 @@ ul {
   }
   
   li a:hover:not(.active) {
-    background-color: #5c5c5c;
+    background-color: rgb(154, 154, 154);
+  }
+
+  li a.dark-theme:hover:not(.active) {
+    background-color: rgb(148, 148, 148);
   }
   
-  .active {
+  .active.dark-theme{
     background-color: rgb(255, 199, 103);
   }
 
-  .active:hover{
+  ul h1{
+    color: rgb(84, 84, 84);
+  }
+
+  .active {
+    background-color: rgb(154, 154, 154);
+  }
+
+  .active.dark-theme:hover{
     background-color: rgb(255, 199, 103,0.9);
   }
+
+  .active:hover{
+    background-color: rgba(86, 86, 86, 0.9);
+  }
+
 body{
     margin: 0px;
+}
+
+ul div{
+  display: none;
 }
 
 ul h1{

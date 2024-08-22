@@ -20,4 +20,5 @@ urlpatterns = [
     path("user_photo_api_post",views.user_photo_api_post,name="user_photo_api_post"),
     path("get_user_id",views.get_user_id,name="get_user_id"),
     path("index_api",views.index_api,name="index_api"),
+    path("all_quizzes",views.all_quizzes_web_page,name="all_quizzes"),
 ]

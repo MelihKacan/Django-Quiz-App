@@ -2,18 +2,9 @@
 {% load static %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+    <title>Dashboard</title>
     <script src="{% static 'js/user_dashboard.js' %}"></script>
-    <script src="{% static 'js/theme.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-
 </head>
 <body>
     <div class="user_container">
@@ -33,6 +24,5 @@
         <!--<a class="back_button" href="/"><button id="back">BACK</button></a>-->
     </div>
 </body>
-</html>
 
 {% endblock %}

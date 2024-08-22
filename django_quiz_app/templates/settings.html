@@ -2,15 +2,8 @@
 {% load static %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <title>Settings</title>
     <script src="{% static 'js/settings.js' %}"></script>
 </head>
 <body>
@@ -19,6 +12,5 @@
     <a class="text_quiz" href="{% url 'logout' %}"><h1>LOGOUT</h1></a>
     <!--<a href="/"><button style="bottom:10px" id="back">BACK</button></a>-->
 </body>
-</html>
 
 {% endblock %}
