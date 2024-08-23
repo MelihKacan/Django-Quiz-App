@@ -207,3 +207,9 @@ def get_user_id(request):
 
 def all_quizzes_web_page(request):
     return render(request,"all_quizzes.html")
+
+@api_view(['GET'])
+def all_quizzes_api(request):
+    all_quizzes = Quiz.objects.all()
+    serializer = QuizSerializer(all_quizzes, many=True)
+    return Response(serializer.data)

@@ -74,6 +74,10 @@ ul i::before{
   li{
     display: none;
   }
+
+  ul div{
+    display: block;
+  }
   ul h1{
     display: block;
     text-align: center;
