@@ -208,8 +208,15 @@ def get_user_id(request):
 def all_quizzes_web_page(request):
     return render(request,"all_quizzes.html")
 
+
+from rest_framework.pagination import PageNumberPagination
+
 @api_view(['GET'])
 def all_quizzes_api(request):
-    all_quizzes = Quiz.objects.all()
-    serializer = QuizSerializer(all_quizzes, many=True)
-    return Response(serializer.data)
+    all_quizzes = Quiz.objects.all().order_by("id") #It Will Change According To Popularity In Next Updates
+    pagination = PageNumberPagination()
+    pagination.page_size = 1  #Will Be Change In Next Updates (To 10 Or 20)
+    pagination.page_query_param = "page"
+    paginated_all_quizzes = pagination.paginate_queryset(all_quizzes, request)
+    serializer = QuizSerializer(paginated_all_quizzes, many=True)
+    return pagination.get_paginated_response(serializer.data)
